@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: compute-usage-monitor
+  labels:
+    app: compute-usage-monitor
+spec:
+  selector:
+    matchLabels:
+      app: compute-usage-monitor
+  template:
+    metadata:
+      labels:
+        app: compute-usage-monitor
+    spec:
+      containers:
+      - name: compute-usage-monitor
+        image: swatkrish753/monitorusage:latest
+        resources:
+          limits:
+            memory: "128Mi"   # adjust as needed
+            cpu: "100m"       # adjust as needed
+          requests:
+            memory: "64Mi"    # adjust as needed
+            cpu: "50m"        # adjust as needed
